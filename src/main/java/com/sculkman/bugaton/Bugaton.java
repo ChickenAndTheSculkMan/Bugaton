@@ -1,12 +1,14 @@
 package com.sculkman.bugaton;
 
 import com.sculkman.bugaton.effect.BugatonEffect;
+import com.sculkman.bugaton.effect.BugatonPotions;
 import com.sculkman.bugaton.entity.BugatonEntities;
 import com.sculkman.bugaton.items.BugatonItemGroups;
 import com.sculkman.bugaton.items.BugatonItems;
 import com.sculkman.bugaton.particle.BugatonParticles;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.potion.PotionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,7 @@ public class Bugaton implements ModInitializer {
 		BugatonEffect.registerBugatonEffects();
 		BugatonItems.registerModItems();
 		BugatonItemGroups.registerItemGroups();
+		BugatonPotions.registerPotions();
 		LOGGER.info("Bugging a ton!");
 	}
 }

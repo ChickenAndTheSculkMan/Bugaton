@@ -1,10 +1,11 @@
 {
 	"powers": [
-		"bugaton:powernamehere"
+		"bugaton:superimmune",
+		"bugaton:less_strength"
 	],
 	"icon": "minecraft:paper",
 	"order": 10,
-	"impact": 3,
+	"impact": 2,
 	"name": "Mad Scientist",
 	"description": "As sane as ever."
 }

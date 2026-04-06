@@ -1,0 +1,11 @@
+{
+  "type": "origins:effect_immunity",
+  "effects": [
+    "minecraft:weakness",
+    "minecraft:poison",
+    "bugaton:felldom",
+    "minecraft:nausea"
+  ],
+  "name": "§2Superimmune",
+  "description": "Your experiments with chemicals and dangerous diseases have made you superimmune. You are immune to a few negative effects."
+}

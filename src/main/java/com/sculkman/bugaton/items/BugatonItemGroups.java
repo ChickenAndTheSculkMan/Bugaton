@@ -18,6 +18,7 @@ public class BugatonItemGroups {
                         //Items
                         entries.add(BugatonItems.NIGHTMARE_SPAWN_EGG);
                         entries.add(BugatonItems.NIGHTMANE);
+                        entries.add(BugatonItems.MODIFIED_SPYGLASS);
                     }).build());
 
     public static void registerItemGroups() {

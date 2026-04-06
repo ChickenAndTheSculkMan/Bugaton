@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:spyglass"
+    },
+    {
+      "item": "minecraft:chain"
+    },
+    {
+      "item": "minecraft:map"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "bugaton:nightmane"
+    }
+  ],
+  "result": {
+    "item": "bugaton:modified_spyglass"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "origins:effect_immunity",
+  "effects": [
+    "minecraft:weakness",
+    "minecraft:poison",
+    "bugaton:felldom",
+    "minecraft:nausea"
+  ],
+  "name": "§2Experimentation",
+  "description": "You are capable of creating new trinkets, gadgets and doohickery, and then using those to create new creatures, mutate exotic old ones and other stuff."
+}

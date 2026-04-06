@@ -3,8 +3,19 @@
   "effect.bugaton.felldom": "Felldom",
 
   "entity.bugaton.nightmare": "Nightmare",
+
   "item.bugaton.nightmare_spawn_egg": "Nightmare Spawn Egg",
   "item.bugaton.nightmane": "Nightmane",
+  "item.bugaton.modified_spyglass": "Modified Spyglass",
 
-  "itemgroup.bugaton.bugaton": "Bugaton"
+  "item.minecraft.potion.effect.parasitic_potion": "Potion of Parasitism",
+  "item.minecraft.splash_potion.effect.parasitic_potion": "Splash Potion of Parasitism",
+  "item.minecraft.lingering_potion.effect.parasitic_potion": "Lingering Potion of Parasitism",
+  "item.minecraft.tipped_arrow.effect.parasitic_potion": "Tipped Arrow of Parasitism",
+
+  "item.bugaton.modified_spyglass.laced": "It appears that this food has been §4contaminated§r.",
+  "item.bugaton.modified_spyglass.none": "It appears that this food is §2safe§r.",
+  "item.bugaton.modified_spyglass.not_food": "This is not a food.",
+
+  "itemgroup.bugaton": "Bugaton"
 }

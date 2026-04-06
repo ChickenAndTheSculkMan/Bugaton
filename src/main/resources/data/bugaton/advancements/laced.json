@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "bugaton:nightmane"
+    },
+    "title": "That Shit LACED???!?!?!?",
+    "description": "Eat a piece of Nightmane-laced food",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "laced": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "nbt": "{LacedByNightmane:1b}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "laced"
+    ]
+  ]
+}
