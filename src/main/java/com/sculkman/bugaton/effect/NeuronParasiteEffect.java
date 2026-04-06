@@ -30,7 +30,7 @@ public class NeuronParasiteEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         super.applyUpdateEffect(entity, amplifier);
-        if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getHungerManager().getFoodLevel() < 18) {
+        if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getHungerManager().getFoodLevel() < 18 && entity.isAlive()) {
             if (!entity.getWorld().isClient) {
                 for (int i = 0; i < 1; i++) {
                     BlockPos blockPos = entity.getBlockPos().add(-2 + random.nextInt(5), 1, -2 + random.nextInt(5));

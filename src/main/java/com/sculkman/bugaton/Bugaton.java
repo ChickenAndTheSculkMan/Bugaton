@@ -2,6 +2,7 @@ package com.sculkman.bugaton;
 
 import com.sculkman.bugaton.effect.BugatonEffect;
 import com.sculkman.bugaton.entity.BugatonEntities;
+import com.sculkman.bugaton.items.BugatonItemGroups;
 import com.sculkman.bugaton.items.BugatonItems;
 import com.sculkman.bugaton.particle.BugatonParticles;
 import net.fabricmc.api.ModInitializer;
@@ -26,6 +27,7 @@ public class Bugaton implements ModInitializer {
 		BugatonEntities.registerModEntites();
 		BugatonEffect.registerBugatonEffects();
 		BugatonItems.registerModItems();
+		BugatonItemGroups.registerItemGroups();
 		LOGGER.info("Bugging a ton!");
 	}
 }

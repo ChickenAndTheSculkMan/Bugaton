@@ -40,7 +40,7 @@ public abstract class PlayerEntityMixin {
             }
         }
         if (playerEntity.getLastAttacker() instanceof PhantomEntity) {
-            playerEntity.addStatusEffect(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, -1));
+            playerEntity.addStatusEffect(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, 3600));
         }
     }
 }
