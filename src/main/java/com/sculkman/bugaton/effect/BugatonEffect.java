@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 public class BugatonEffect {
 
     public static final StatusEffect PHANTOM_FEVER = new NeuronParasiteEffect(StatusEffectCategory.HARMFUL, 0);
+    public static final StatusEffect FELLDOM = new FelldomEffect(StatusEffectCategory.HARMFUL, 0);
 
     public static StatusEffect registerEffect(String name, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Bugaton.MOD_ID, name),
@@ -20,5 +21,6 @@ public class BugatonEffect {
 
     public static void registerBugatonEffects() {
         registerEffect("phantom_fever", PHANTOM_FEVER);
+        registerEffect("felldom", FELLDOM);
     }
 }

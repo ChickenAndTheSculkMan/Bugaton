@@ -2,6 +2,8 @@ package com.sculkman.bugaton.entity;
 
 import com.sculkman.bugaton.entity.goals.NightmareMeleeAttackGoal;
 import com.sculkman.bugaton.entity.goals.UnPacifiedActiveTargetGoal;
+import com.sculkman.bugaton.items.BugatonItems;
+import com.sculkman.bugaton.particle.BugatonParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -17,12 +19,10 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -32,6 +32,7 @@ import net.minecraft.util.Arm;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -45,16 +46,21 @@ public class NightmareEntity extends TameableEntity {
 
     private boolean isPacified;
     private boolean songPlaying;
+    private boolean isResinated;
     @Nullable
     private BlockPos songSource;
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
+
     public final AnimationState dancingAnimationState = new AnimationState();
     private int dancingAnimationTimeout = 0;
+
 
     private static final TrackedData<Boolean> SCUTTERING =
             DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> PACIFIED =
+            DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> RESINATED =
             DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     @Override
@@ -94,6 +100,17 @@ public class NightmareEntity extends TameableEntity {
         if (this.random.nextInt(12000) == 1 && this.isPacified) {
             this.dropItem(Items.PHANTOM_MEMBRANE);
             this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 2.0F);
+        }
+        if (this.random.nextInt(48000) == 1 && this.isPacified && !this.isResinated) {
+            this.setResinated(true);
+            this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 0.3F);
+        }
+        if (this.isResinated && this.random.nextInt(80) == 1) {
+            if (!this.getWorld().isClient) {
+                ServerWorld serverWorld = (ServerWorld) this.getWorld();
+                Vec3d pos = this.getPos();
+                serverWorld.spawnParticles(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, (double) pos.getX() + 0.5, (double) pos.getY() + 0.9, (double) pos.getZ() + 0.5, 5, 1.0, 1.0, 1.0, 0.0);
+            }
         }
         setupAnimationStates();
     }
@@ -135,6 +152,7 @@ public class NightmareEntity extends TameableEntity {
         this.dataTracker.startTracking(SCUTTERING, false);
         this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
         this.dataTracker.startTracking(PACIFIED, false);
+        this.dataTracker.startTracking(RESINATED, false);
     }
 
     @Override
@@ -184,7 +202,7 @@ public class NightmareEntity extends TameableEntity {
         Item item = itemStack.getItem();
 
         if (this.getWorld().isClient) {
-            boolean bl = this.isPacified && itemStack.isOf(Items.PHANTOM_MEMBRANE);
+            boolean bl = this.isPacified && itemStack.isOf(Items.PHANTOM_MEMBRANE) || this.isResinated && itemStack.isOf(Items.GLASS_BOTTLE);
             return bl ? ActionResult.CONSUME : ActionResult.PASS;
         }
         if (!this.isNightmarePacified() && itemStack.isOf(Items.PHANTOM_MEMBRANE)) {
@@ -205,6 +223,10 @@ public class NightmareEntity extends TameableEntity {
                 return ActionResult.SUCCESS;
             }
         }
+        if (item instanceof ShearsItem && this.isResinated) {
+            this.dropItem(BugatonItems.NIGHTMANE);
+            this.setResinated(false);
+        }
         return super.interactMob(player, hand);
     }
 
@@ -213,6 +235,7 @@ public class NightmareEntity extends TameableEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("IsPacified", this.isPacified);
+        nbt.putBoolean("IsResinated", this.isResinated);
         nbt.putByte("CollarColor", (byte)this.getCollarColor().getId());
     }
 
@@ -222,6 +245,8 @@ public class NightmareEntity extends TameableEntity {
         if (nbt.contains("CollarColor", NbtElement.NUMBER_TYPE)) {
             this.setCollarColor(DyeColor.byId(nbt.getInt("CollarColor")));
         }
+        this.isResinated = nbt.getBoolean("IsResinated");
+        this.setResinated(this.isResinated);
         this.isPacified = nbt.getBoolean("IsPacified");
         this.setPacified(this.isPacified);
     }
@@ -238,5 +263,14 @@ public class NightmareEntity extends TameableEntity {
     public void setPacified(boolean pacified) {
         this.isPacified = pacified;
         this.dataTracker.set(PACIFIED, pacified);
+    }
+
+    public boolean isResinated() {
+        return this.dataTracker.get(RESINATED);
+    }
+
+    public void setResinated(boolean resinated) {
+        this.isResinated = resinated;
+        this.dataTracker.set(RESINATED, resinated);
     }
 }

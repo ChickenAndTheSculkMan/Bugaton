@@ -17,6 +17,7 @@ public class BugatonItemGroups {
                     .icon(() -> new ItemStack(BugatonItems.NIGHTMARE_SPAWN_EGG)).entries((displayContext, entries) -> {
                         //Items
                         entries.add(BugatonItems.NIGHTMARE_SPAWN_EGG);
+                        entries.add(BugatonItems.NIGHTMANE);
                     }).build());
 
     public static void registerItemGroups() {
