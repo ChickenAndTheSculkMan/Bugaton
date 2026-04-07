@@ -24,12 +24,14 @@ public class NightmaneItem extends Item {
         itemStack.decrement(1);
         user.heal(2);
         user.addStatusEffect(new StatusEffectInstance(BugatonEffect.FELLDOM, -1));
-        StatusEffect i = user.getStatusEffects().iterator().next().getEffectType();
-        int a = user.getStatusEffects().iterator().next().getAmplifier();
-        int b = user.getStatusEffects().iterator().next().getDuration();
-        if (i instanceof FelldomEffect) {
-            if (a != 0) {
-                user.setStatusEffect(new StatusEffectInstance(i, b, a - 1), user);
+        if (!user.getWorld().isClient) {
+            StatusEffect i = user.getStatusEffects().iterator().next().getEffectType();
+            int a = user.getStatusEffects().iterator().next().getAmplifier();
+            int b = user.getStatusEffects().iterator().next().getDuration();
+            if (i instanceof FelldomEffect) {
+                if (a != 0) {
+                    user.setStatusEffect(new StatusEffectInstance(i, b, a - 1), user);
+                }
             }
         }
         user.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 1.1F, 1.6F);

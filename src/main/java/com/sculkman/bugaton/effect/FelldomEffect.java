@@ -29,8 +29,8 @@ public class FelldomEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         super.applyUpdateEffect(entity, amplifier);
-        int a = (entity).getStatusEffects().iterator().next().getAmplifier();
-        if (amplifier != 2 && random.nextInt(12000) == 1) {
+        if (!entity.getWorld().isClient && amplifier != 2 && random.nextInt(12000) == 1) {
+            int a = (entity).getStatusEffects().iterator().next().getAmplifier();
             entity.setStatusEffect(new StatusEffectInstance(BugatonEffect.FELLDOM, -1, a + 1), entity);
         } else if (amplifier == 2) {
             // entity.timeUntilRegen = 2;
