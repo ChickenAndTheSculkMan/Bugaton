@@ -3,7 +3,7 @@
 	"modifier": {
 		"name": "Damage Penalty",
 		"attribute": "minecraft:generic.attack_damage",
-		"value": -4,
+		"value": -8,
 		"operation": "addition"
 	},
 	"name": "§4Unskilled",

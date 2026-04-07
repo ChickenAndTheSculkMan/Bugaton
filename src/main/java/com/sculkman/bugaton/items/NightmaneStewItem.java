@@ -9,19 +9,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class NightmaneItem extends Item {
-    public NightmaneItem(Settings settings) {
+public class NightmaneStewItem extends Item {
+    public NightmaneStewItem(Settings settings) {
         super(settings);
     }
-
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         ItemStack itemStack = user.getStackInHand(user.getActiveHand());
-        user.heal(3);
+        user.heal(8);
         if (!user.getWorld().isClient && user instanceof PlayerEntity && user.isAlive() && user.hasStatusEffect(BugatonEffect.FELLDOM)) {
             StatusEffect i = user.getStatusEffects().iterator().next().getEffectType();
             int a = user.getStatusEffects().iterator().next().getAmplifier();
@@ -32,7 +29,7 @@ public class NightmaneItem extends Item {
                 }
             }
         }
-        user.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 1.1F, 1.6F);
+        user.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 1.1F, 0.8F);
         return super.finishUsing(stack, world, user);
     }
 }
