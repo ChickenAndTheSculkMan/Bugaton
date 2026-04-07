@@ -18,6 +18,7 @@ public class BugatonItems {
     public static final Item NIGHTMANE = registerItem("nightmane", new NightmaneItem(new FabricItemSettings().rarity(Rarity.COMMON).food(BugatonFoodComponents.NIGHTMANE_STEW)));
     public static final Item MODIFIED_SPYGLASS = registerItem("modified_spyglass", new ModifiedSpyglassItem(new FabricItemSettings().maxDamage(50)));
     public static final Item NIGHTMANE_STEW = registerItem("nightmane_stew", new NightmaneStewItem(new FabricItemSettings().food(BugatonFoodComponents.NIGHTMANE_STEW).rarity(Rarity.UNCOMMON).maxCount(1)));
+    public static final Item PHANTASM = registerItem("phantasm", new PhantasmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Bugaton.MOD_ID, name), item);

@@ -1,5 +1,6 @@
 package com.sculkman.bugaton.entity;
 
+import com.sculkman.bugaton.effect.BugatonEffect;
 import com.sculkman.bugaton.entity.goals.NightmareMeleeAttackGoal;
 import com.sculkman.bugaton.entity.goals.UnPacifiedActiveTargetGoal;
 import com.sculkman.bugaton.items.BugatonItems;
@@ -19,6 +20,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.raid.RaiderEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -38,6 +40,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class NightmareEntity extends TameableEntity {
     protected NightmareEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -63,6 +66,9 @@ public class NightmareEntity extends TameableEntity {
     private static final TrackedData<Boolean> RESINATED =
             DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
+    static Predicate<LivingEntity> canKillNightmaresQuestionMark =
+            (livingEntity) -> !(livingEntity.hasStatusEffect(BugatonEffect.PHANTOM_FEVER));
+
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
@@ -70,7 +76,8 @@ public class NightmareEntity extends TameableEntity {
         this.goalSelector.add(8, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(10, new LookAroundGoal(this));
-        this.targetSelector.add(4, new UnPacifiedActiveTargetGoal<>(this, PlayerEntity.class, true, null));
+        this.targetSelector.add(1, new RevengeGoal(this, NightmareEntity.class).setGroupRevenge());
+        this.targetSelector.add(4, new UnPacifiedActiveTargetGoal<>(this, PlayerEntity.class, true, canKillNightmaresQuestionMark));
     }
 
     public static DefaultAttributeContainer.Builder createNightmareAttributes() {
@@ -97,11 +104,11 @@ public class NightmareEntity extends TameableEntity {
     @Override
     public void tick() {
         super.tick();
-        if (this.random.nextInt(12000) == 1 && this.isPacified) {
+        if (this.random.nextInt(12000) == 1) {
             this.dropItem(Items.PHANTOM_MEMBRANE);
             this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 2.0F);
         }
-        if (this.random.nextInt(48000) == 1 && this.isPacified && !this.isResinated) {
+        if (this.random.nextInt(24000) == 1 && this.isPacified && !this.isResinated) {
             this.setResinated(true);
             this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 0.3F);
         }
@@ -193,7 +200,7 @@ public class NightmareEntity extends TameableEntity {
 
     @Override
     public EntityGroup getGroup() {
-        return EntityGroup.UNDEAD;
+        return EntityGroup.ARTHROPOD;
     }
 
     @Override

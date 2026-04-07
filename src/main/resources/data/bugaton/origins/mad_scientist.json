@@ -1,5 +1,6 @@
 {
 	"powers": [
+		"bugaton:experimentation",
 		"bugaton:superimmune",
 		"bugaton:less_strength"
 	],

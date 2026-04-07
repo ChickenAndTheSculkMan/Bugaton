@@ -30,9 +30,9 @@ public class NeuronParasiteEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         super.applyUpdateEffect(entity, amplifier);
-        if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getHungerManager().getFoodLevel() < 18 && entity.isAlive()) {
+        if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getHungerManager().getFoodLevel() < (11 + (amplifier + 1)) && entity.isAlive()) {
             if (!entity.getWorld().isClient) {
-                for (int i = 0; i < 1; i++) {
+                for (int i = 0; i < 1 + amplifier; i++) {
                     BlockPos blockPos = entity.getBlockPos().add(-2 + random.nextInt(5), 1, -2 + random.nextInt(5));
                     NightmareEntity nightmareEntity = (NightmareEntity) BugatonEntities.NIGHTMARE.create(entity.getWorld());
                     if (nightmareEntity != null) {

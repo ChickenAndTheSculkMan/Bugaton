@@ -20,7 +20,6 @@ public class NightmaneItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = user.getStackInHand(user.getActiveHand());
         user.heal(3);
         if (!user.getWorld().isClient && user instanceof PlayerEntity && user.isAlive() && user.hasStatusEffect(BugatonEffect.FELLDOM)) {
             StatusEffect i = user.getStatusEffects().iterator().next().getEffectType();

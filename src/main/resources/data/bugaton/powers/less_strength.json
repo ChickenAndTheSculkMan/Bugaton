@@ -7,5 +7,5 @@
 		"operation": "addition"
 	},
 	"name": "§4Unskilled",
-	"description": "You are unskilled in the art of melee combat. You will receive a damage penalty of 4 whenever attacking."
+	"description": "You are unskilled in the art of melee combat. You will receive a damage penalty of -8 whenever attacking. Functionally disabling Melee."
 }

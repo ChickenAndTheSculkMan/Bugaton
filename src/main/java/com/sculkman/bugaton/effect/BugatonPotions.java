@@ -16,6 +16,15 @@ public class BugatonPotions {
     public static final Potion PARASITIC_POTION =
             Registry.register(Registries.POTION, new Identifier(Bugaton.MOD_ID, "parasitic_potion"),
                     new Potion(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, 3600, 0)));
+    public static final Potion LONGER_PARASITIC_POTION =
+            Registry.register(Registries.POTION, new Identifier(Bugaton.MOD_ID, "stronger_parasitic_potion"),
+                    new Potion(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, 7200, 1)));
+    public static final Potion LONGEST_PARASITIC_POTION =
+            Registry.register(Registries.POTION, new Identifier(Bugaton.MOD_ID, "strongest_parasitic_potion"),
+                    new Potion(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, 24000, 2)));
+    public static final Potion ETERNAL_PARASITIC_POTION =
+            Registry.register(Registries.POTION, new Identifier(Bugaton.MOD_ID, "eternal_parasitic_potion"),
+                    new Potion(new StatusEffectInstance(BugatonEffect.PHANTOM_FEVER, -1, 3)));
 
     public static void registerPotions(){
         registerPotionsRecipes();
@@ -23,5 +32,8 @@ public class BugatonPotions {
 
     public static void registerPotionsRecipes(){
         BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BugatonItems.NIGHTMANE, PARASITIC_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(BugatonPotions.PARASITIC_POTION, BugatonItems.NIGHTMANE, LONGER_PARASITIC_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(BugatonPotions.LONGER_PARASITIC_POTION, BugatonItems.NIGHTMANE, LONGEST_PARASITIC_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(BugatonPotions.LONGEST_PARASITIC_POTION, BugatonItems.NIGHTMANE, ETERNAL_PARASITIC_POTION);
     }
 }

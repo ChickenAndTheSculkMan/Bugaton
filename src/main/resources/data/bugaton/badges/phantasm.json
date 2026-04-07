@@ -1,7 +1,8 @@
 {
-  "type": "origins:recipe",
+  "type": "origins:crafting_recipe",
+  "sprite": "bugaton:textures/item/phantasm.png",
   "recipe": {
-    "id": "bugaton:mad_scientist/phantasm",
+    "id": "bugaton:mad_scientist/phantasm_example",
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
       {
@@ -32,13 +33,5 @@
     "result": {
       "item": "bugaton:phantasm"
     }
-  },
-  "name": "§2Experimentation",
-  "description": "You are capable of creating new trinkets, gadgets and doohickery, and then using those to create new creatures, mutate exotic old ones and other stuff.",
-  "badges": [
-    {
-      "sprite": "bugaton:textures/item/phantasm.png",
-      "text": "Phantasm"
-    }
-  ]
+  }
 }

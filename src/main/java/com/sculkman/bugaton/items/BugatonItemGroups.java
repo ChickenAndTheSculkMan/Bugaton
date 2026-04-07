@@ -20,6 +20,7 @@ public class BugatonItemGroups {
                         entries.add(BugatonItems.NIGHTMANE);
                         entries.add(BugatonItems.MODIFIED_SPYGLASS);
                         entries.add(BugatonItems.NIGHTMANE_STEW);
+                        entries.add(BugatonItems.PHANTASM);
                     }).build());
 
     public static void registerItemGroups() {
