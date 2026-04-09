@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 public class BugatonParticles {
 
     public static final DefaultParticleType LOCUST = FabricParticleTypes.simple();
+    public static final DefaultParticleType PHANTOMLING = FabricParticleTypes.simple();
 
     //Improved variant of the Vesselage Particle registerer
     private static ParticleType<DefaultParticleType> registerParticleType(String name, ParticleType particleType) {
@@ -21,5 +22,6 @@ public class BugatonParticles {
 
     public static void registerBugatonParticles() {
         registerParticleType("locust", LOCUST);
+        registerParticleType("phantomling", PHANTOMLING);
     }
 }

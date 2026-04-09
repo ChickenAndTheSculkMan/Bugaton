@@ -76,7 +76,6 @@ public class NightmareEntity extends TameableEntity {
         this.goalSelector.add(8, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(10, new LookAroundGoal(this));
-        this.targetSelector.add(1, new RevengeGoal(this, NightmareEntity.class).setGroupRevenge());
         this.targetSelector.add(4, new UnPacifiedActiveTargetGoal<>(this, PlayerEntity.class, true, canKillNightmaresQuestionMark));
     }
 
@@ -217,6 +216,7 @@ public class NightmareEntity extends TameableEntity {
                 itemStack.decrement(1);
             }
             this.setPacified(true);
+            this.setPersistent();
             this.getWorld().sendEntityStatus(this, EntityStatuses.ADD_POSITIVE_PLAYER_REACTION_PARTICLES);
         }
         if (item instanceof DyeItem dyeItem && this.isNightmarePacified()) {

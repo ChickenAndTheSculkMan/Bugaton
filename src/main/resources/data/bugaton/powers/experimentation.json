@@ -1,36 +1,80 @@
 {
-  "type": "origins:recipe",
-  "recipe": {
-    "id": "bugaton:mad_scientist/phantasm",
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-      {
-        "item": "bugaton:nightmane"
-      },
-      {
-        "item": "bugaton:nightmane"
-      },
-      {
-        "item": "bugaton:nightmane"
-      },
-      {
-        "item": "bugaton:nightmane"
-      },
-      {
-        "item": "minecraft:phantom_membrane"
-      },
-      {
-        "item": "minecraft:phantom_membrane"
-      },
-      {
-        "item": "minecraft:phantom_membrane"
-      },
-      {
-        "item": "minecraft:phantom_membrane"
+  "type": "origins:multiple",
+
+  "abominationbombible": {
+    "type": "origins:recipe",
+    "recipe": {
+      "id": "bugaton:mad_scientist/abhorrent_delight",
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "minecraft:bowl"
+        }
+      ],
+      "result": {
+        "item": "bugaton:abhorrent_delight"
       }
-    ],
-    "result": {
-      "item": "bugaton:phantasm"
+    }
+  },
+
+  "phantasms": {
+    "type": "origins:recipe",
+    "recipe": {
+      "id": "bugaton:mad_scientist/phantasm",
+      "type": "minecraft:crafting_shapeless",
+      "ingredients": [
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "bugaton:nightmane"
+        },
+        {
+          "item": "minecraft:phantom_membrane"
+        },
+        {
+          "item": "minecraft:phantom_membrane"
+        },
+        {
+          "item": "minecraft:phantom_membrane"
+        },
+        {
+          "item": "minecraft:phantom_membrane"
+        }
+      ],
+      "result": {
+        "item": "bugaton:phantasm"
+      }
     }
   },
   "name": "§2Experimentation",

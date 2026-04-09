@@ -2,7 +2,8 @@
 	"powers": [
 		"bugaton:experimentation",
 		"bugaton:superimmune",
-		"bugaton:less_strength"
+		"bugaton:less_strength",
+		"bugaton:phantom_cervixion"
 	],
 	"icon": "minecraft:paper",
 	"order": 10,

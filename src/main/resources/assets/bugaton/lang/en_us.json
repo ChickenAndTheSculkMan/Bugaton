@@ -1,6 +1,12 @@
 {
   "effect.bugaton.phantom_fever": "Phantom Fever",
   "effect.bugaton.felldom": "Felldom",
+  "effect.bugaton.phantasmic_lure": "Phantasmic Lure",
+  "effect.bugaton.shade_vulnerability": "Shade Vulnerability",
+  "effect.bugaton.virality": "Virality",
+
+  "death.attack.swarming": "%1$s was eaten alive",
+  "death.attack.swarming.player": "%1$s was eaten alive while fighting %2$s",
 
   "entity.bugaton.nightmare": "Nightmare",
 
@@ -8,27 +14,73 @@
   "item.bugaton.nightmane": "Nightmane",
   "item.bugaton.modified_spyglass": "Modified Spyglass",
   "item.bugaton.nightmane_stew": "Nightmane Stew",
-  "item.bugaton.phantasm": "Embryonic Phantasm",
+  "item.bugaton.phantasm": "Phantasm",
+  "item.bugaton.abhorrent_delight": "Abhorrent Delight",
+  "item.bugaton.unknowable_embryo": "Unknowable Embryo",
 
   "item.minecraft.potion.effect.parasitic_potion": "Potion of Parasitism",
   "item.minecraft.potion.effect.stronger_parasitic_potion": "Potion of Parasitism",
   "item.minecraft.potion.effect.strongest_parasitic_potion": "Potion of Parasitism",
   "item.minecraft.potion.effect.eternal_parasitic_potion": "Eternal Potion of Parasitism",
 
+  "item.minecraft.potion.effect.luring_potion": "Potion of Luring",
+  "item.minecraft.potion.effect.strong_luring_potion": "Potion of Luring",
+  "item.minecraft.potion.effect.long_luring_potion": "Potion of Luring",
+
+  "item.minecraft.potion.effect.virality_potion": "Potion of Virality",
+  "item.minecraft.potion.effect.strong_virality_potion": "Potion of Virality",
+  "item.minecraft.potion.effect.long_virality_potion": "Potion of Virality",
+
+  "item.minecraft.potion.effect.shade_vulnerability_potion": "Potion of Shade Vulnerability",
+  "item.minecraft.potion.effect.long_shade_vulnerability_potion": "Potion of Shade Vulnerability",
+
   "item.minecraft.splash_potion.effect.parasitic_potion": "Splash Potion of Parasitism",
   "item.minecraft.splash_potion.effect.stronger_parasitic_potion": "Splash Potion of Parasitism",
   "item.minecraft.splash_potion.effect.strongest_parasitic_potion": "Splash Potion of Parasitism",
   "item.minecraft.splash_potion.effect.eternal_parasitic_potion": "Eternal Splash Potion of Parasitism",
+
+  "item.minecraft.splash_potion.effect.virality_potion": "Splash Potion of Virality",
+  "item.minecraft.splash_potion.effect.strong_virality_potion": "Splash Potion of Virality",
+  "item.minecraft.splash_potion.effect.long_virality_potion": "Splash Potion of Virality",
+
+  "item.minecraft.splash_potion.effect.shade_vulnerability_potion": "Splash Potion of Shade Vulnerability",
+  "item.minecraft.splash_potion.effect.long_shade_vulnerability_potion": "Splash Potion of Shade Vulnerability",
+
+  "item.minecraft.splash_potion.effect.luring_potion": "Splash Potion of Luring",
+  "item.minecraft.splash_potion.effect.strong_luring_potion": "Splash Potion of Luring",
+  "item.minecraft.splash_potion.effect.long_luring_potion": "Splash Potion of Luring",
 
   "item.minecraft.lingering_potion.effect.parasitic_potion": "Lingering Potion of Parasitism",
   "item.minecraft.lingering_potion.effect.stronger_parasitic_potion": "Lingering Potion of Parasitism",
   "item.minecraft.lingering_potion.effect.strongest_parasitic_potion": "Lingering Potion of Parasitism",
   "item.minecraft.lingering_potion.effect.eternal_parasitic_potion": "Eternal Lingering Potion of Parasitism",
 
+  "item.minecraft.lingering_potion.effect.virality_potion": "Lingering Potion of Virality",
+  "item.minecraft.lingering_potion.effect.strong_virality_potion": "Lingering Potion of Virality",
+  "item.minecraft.lingering_potion.effect.long_virality_potion": "Lingering Potion of Virality",
+
+  "item.minecraft.lingering_potion.effect.shade_vulnerability_potion": "Lingering Potion of Shade Vulnerability",
+  "item.minecraft.lingering_potion.effect.long_shade_vulnerability_potion": "Lingering Potion of Shade Vulnerability",
+
+  "item.minecraft.lingering_potion.effect.luring_potion": "Lingering Potion of Luring",
+  "item.minecraft.lingering_potion.effect.strong_luring_potion": "Lingering Potion of Luring",
+  "item.minecraft.lingering_potion.effect.long_luring_potion": "Lingering Potion of Luring",
+
+  "item.minecraft.tipped_arrow.effect.shade_vulnerability_potion": "Tipped Arrow of Shade Vulnerability",
+  "item.minecraft.tipped_arrow.effect.long_shade_vulnerability_potion": "Tipped Arrow of Shade Vulnerability",
+
+  "item.minecraft.tipped_arrow.effect.virality_potion": "Tipped Arrow of Virality",
+  "item.minecraft.tipped_arrow.effect.strong_virality_potion": "Tipped Arrow of Virality",
+  "item.minecraft.tipped_arrow.effect.long_virality_potion": "Tipped Arrow of Virality",
+
   "item.minecraft.tipped_arrow.effect.parasitic_potion": "Tipped Arrow of Parasitism",
   "item.minecraft.tipped_arrow.effect.stronger_parasitic_potion": "Tipped Arrow of Parasitism",
   "item.minecraft.tipped_arrow.effect.strongest_parasitic_potion": "Tipped Arrow of Parasitism",
   "item.minecraft.tipped_arrow.effect.eternal_parasitic_potion": "Eternal Tipped Arrow of Parasitism",
+
+  "item.minecraft.tipped_arrow.effect.luring_potion": "Tipped Arrow of Luring",
+  "item.minecraft.tipped_arrow.effect.strong_luring_potion": "Tipped Arrow of Luring",
+  "item.minecraft.tipped_arrow.effect.long_luring_potion": "Tipped Arrow of Luring",
 
   "item.bugaton.modified_spyglass.laced": "It appears that this food has been §4contaminated§r.",
   "item.bugaton.modified_spyglass.none": "It appears that this food is §2safe§r.",

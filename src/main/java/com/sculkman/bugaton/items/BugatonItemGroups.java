@@ -21,6 +21,8 @@ public class BugatonItemGroups {
                         entries.add(BugatonItems.MODIFIED_SPYGLASS);
                         entries.add(BugatonItems.NIGHTMANE_STEW);
                         entries.add(BugatonItems.PHANTASM);
+                        entries.add(BugatonItems.ABHORRENT_DELIGHT);
+                        entries.add(BugatonItems.UNKNOWABLE_EMBRYO);
                     }).build());
 
     public static void registerItemGroups() {

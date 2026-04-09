@@ -1,0 +1,50 @@
+{
+  "type": "origins:action_on_entity_use",
+  "bientity_action": {
+    "type": "origins:target_action",
+    "action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:spawn_entity",
+          "entity_type": "minecraft:item",
+          "tag": "{Item:{id:\"bugaton:unknowable_embryo\",Count:1b}}"
+        },
+        {
+          "type": "origins:grant_power",
+          "power": "bugaton:cervixified",
+          "source": "bugaton:phantom_deembryoinification"
+        }
+      ]
+    }
+  },
+  "bientity_condition": {
+      "type": "origins:target_condition",
+      "condition": {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:power",
+            "power": "bugaton:cervixified",
+            "inverted": true
+          },
+          {
+            "type": "origins:entity_type",
+            "entity_type": "minecraft:phantom"
+          }
+        ]
+      }
+  },
+  "item_condition": {
+    "type": "origins:ingredient",
+    "ingredient": {
+      "item": "minecraft:shears"
+    }
+  },
+  "item_action": {
+    "type": "origins:damage",
+    "amount": 10,
+    "ignore_unbreaking": false
+  },
+  "hidden": true
+}

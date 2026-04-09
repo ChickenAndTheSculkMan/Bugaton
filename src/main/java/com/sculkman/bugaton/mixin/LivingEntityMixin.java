@@ -37,7 +37,7 @@ public abstract class LivingEntityMixin {
                 attacker.damage(attacker.getDamageSources().sting(this.attackingPlayer), 15);
                 stack.decrement(1);
                 if (!attacker.getWorld().isClient) {
-                    for (int i = 0; i < 2; i++) {
+                    for (int i = 0; i < 1; i++) {
                         BlockPos blockPos = attacker.getBlockPos().add(0, 1, 0);
                         NightmareEntity nightmareEntity = (NightmareEntity) BugatonEntities.NIGHTMARE.create(attacker.getWorld());
                         if (nightmareEntity != null) {
