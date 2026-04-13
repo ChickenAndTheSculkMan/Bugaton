@@ -4,6 +4,7 @@ import com.sculkman.bugaton.effect.BugatonEffect;
 import com.sculkman.bugaton.entity.goals.NightmareMeleeAttackGoal;
 import com.sculkman.bugaton.entity.goals.UnPacifiedActiveTargetGoal;
 import com.sculkman.bugaton.items.BugatonItems;
+import com.sculkman.bugaton.items.FelldomBottle;
 import com.sculkman.bugaton.particle.BugatonParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -49,7 +50,7 @@ public class NightmareEntity extends TameableEntity {
 
     private boolean isPacified;
     private boolean songPlaying;
-    private boolean isResinated;
+    private int nightmanePotency;
     @Nullable
     private BlockPos songSource;
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -63,8 +64,8 @@ public class NightmareEntity extends TameableEntity {
             DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> PACIFIED =
             DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    private static final TrackedData<Boolean> RESINATED =
-            DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Integer> RESINATED =
+            DataTracker.registerData(NightmareEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     static Predicate<LivingEntity> canKillNightmaresQuestionMark =
             (livingEntity) -> !(livingEntity.hasStatusEffect(BugatonEffect.PHANTOM_FEVER));
@@ -107,11 +108,11 @@ public class NightmareEntity extends TameableEntity {
             this.dropItem(Items.PHANTOM_MEMBRANE);
             this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 2.0F);
         }
-        if (this.random.nextInt(24000) == 1 && this.isPacified && !this.isResinated) {
-            this.setResinated(true);
+        if (this.random.nextInt(24000) == 1 && this.isPacified && this.nightmanePotency < 1) {
+            this.setNightmanePotency(1);
             this.playSound(SoundEvents.ENTITY_PHANTOM_AMBIENT, 0.6F, 0.3F);
         }
-        if (this.isResinated && this.random.nextInt(80) == 1) {
+        if (this.isNightmanePotency() && this.random.nextInt(80) == 1) {
             if (!this.getWorld().isClient) {
                 ServerWorld serverWorld = (ServerWorld) this.getWorld();
                 Vec3d pos = this.getPos();
@@ -158,7 +159,7 @@ public class NightmareEntity extends TameableEntity {
         this.dataTracker.startTracking(SCUTTERING, false);
         this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
         this.dataTracker.startTracking(PACIFIED, false);
-        this.dataTracker.startTracking(RESINATED, false);
+        this.dataTracker.startTracking(RESINATED, 0);
     }
 
     @Override
@@ -208,7 +209,7 @@ public class NightmareEntity extends TameableEntity {
         Item item = itemStack.getItem();
 
         if (this.getWorld().isClient) {
-            boolean bl = this.isPacified && itemStack.isOf(Items.PHANTOM_MEMBRANE) || this.isResinated && itemStack.isOf(Items.GLASS_BOTTLE);
+            boolean bl = this.isPacified && itemStack.isOf(Items.PHANTOM_MEMBRANE) || this.isNightmanePotency() && itemStack.isOf(Items.SHEARS) || this.isNightmanePotency() && itemStack.isOf(Items.GLASS_BOTTLE) || this.isNightmanePotency() && itemStack.isOf(BugatonItems.FELLDOM_BOTTLE) ;
             return bl ? ActionResult.CONSUME : ActionResult.PASS;
         }
         if (!this.isNightmarePacified() && itemStack.isOf(Items.PHANTOM_MEMBRANE)) {
@@ -218,7 +219,7 @@ public class NightmareEntity extends TameableEntity {
             this.setPacified(true);
             this.setPersistent();
             this.getWorld().sendEntityStatus(this, EntityStatuses.ADD_POSITIVE_PLAYER_REACTION_PARTICLES);
-        }
+        } else
         if (item instanceof DyeItem dyeItem && this.isNightmarePacified()) {
             DyeColor dyeColor = dyeItem.getColor();
             if (dyeColor != this.getCollarColor()) {
@@ -229,10 +230,26 @@ public class NightmareEntity extends TameableEntity {
 
                 return ActionResult.SUCCESS;
             }
-        }
-        if (item instanceof ShearsItem && this.isResinated) {
-            this.dropItem(BugatonItems.NIGHTMANE);
-            this.setResinated(false);
+        } else
+        if (item instanceof ShearsItem && this.isNightmanePotency()) {
+            ItemEntity nightmaneEntity = this.dropItem(BugatonItems.NIGHTMANE);
+            itemStack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            if (nightmaneEntity != null) {
+                ((ItemEntity)nightmaneEntity).getStack().getOrCreateNbt().putInt("NightmanePotency", getNightmanePotency());
+            }
+            this.setNightmanePotency(0);
+        } else
+        if (item instanceof FelldomBottle && getNightmanePotency() < 10) {
+            itemStack.decrement(1);
+            player.getInventory().offerOrDrop(new ItemStack(Items.GLASS_BOTTLE));
+            this.getWorld().sendEntityStatus(this, EntityStatuses.ADD_POSITIVE_PLAYER_REACTION_PARTICLES);
+            this.setNightmanePotency(this.nightmanePotency + 1);
+        } else
+        if (item instanceof GlassBottleItem && isNightmanePotency()) {
+            itemStack.decrement(1);
+            player.getInventory().offerOrDrop(new ItemStack(BugatonItems.FELLDOM_BOTTLE));
+            this.getWorld().sendEntityStatus(this, EntityStatuses.ADD_NEGATIVE_PLAYER_REACTION_PARTICLES);
+            this.setNightmanePotency(this.nightmanePotency - 1);
         }
         return super.interactMob(player, hand);
     }
@@ -242,7 +259,7 @@ public class NightmareEntity extends TameableEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("IsPacified", this.isPacified);
-        nbt.putBoolean("IsResinated", this.isResinated);
+        nbt.putInt("IsResinated", this.nightmanePotency);
         nbt.putByte("CollarColor", (byte)this.getCollarColor().getId());
     }
 
@@ -252,8 +269,8 @@ public class NightmareEntity extends TameableEntity {
         if (nbt.contains("CollarColor", NbtElement.NUMBER_TYPE)) {
             this.setCollarColor(DyeColor.byId(nbt.getInt("CollarColor")));
         }
-        this.isResinated = nbt.getBoolean("IsResinated");
-        this.setResinated(this.isResinated);
+        this.nightmanePotency = nbt.getInt("IsResinated");
+        this.setNightmanePotency(this.nightmanePotency);
         this.isPacified = nbt.getBoolean("IsPacified");
         this.setPacified(this.isPacified);
     }
@@ -272,12 +289,16 @@ public class NightmareEntity extends TameableEntity {
         this.dataTracker.set(PACIFIED, pacified);
     }
 
-    public boolean isResinated() {
+    public boolean isNightmanePotency() {
+        return this.dataTracker.get(RESINATED) != 0;
+    }
+
+    public int getNightmanePotency() {
         return this.dataTracker.get(RESINATED);
     }
 
-    public void setResinated(boolean resinated) {
-        this.isResinated = resinated;
-        this.dataTracker.set(RESINATED, resinated);
+    public void setNightmanePotency(int nightmanePotency) {
+        this.nightmanePotency = nightmanePotency;
+        this.dataTracker.set(RESINATED, nightmanePotency);
     }
 }

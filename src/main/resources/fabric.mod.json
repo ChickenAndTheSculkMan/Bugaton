@@ -1,11 +1,13 @@
 {
 	"schemaVersion": 1,
 	"id": "bugaton",
-	"version": "${version}",
+	"version": "1.2.0-1.20.1-season-one",
 	"name": "Bugaton",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "bugging it a ton",
 	"authors": [
-		"Me!"
+		"Sculkman",
+		"TheZoidMaster",
+		"Jaegerwald (Emotional Support)"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

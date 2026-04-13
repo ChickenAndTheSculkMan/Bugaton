@@ -1,4 +1,17 @@
 {
+  "item.bugaton.felldom_bottle": "Felldom Bottle",
+
+  "tooltips.bugaton.felldom_bottle.shifting": "§7May be drunk for Felldom or fed to nightmares",
+  "tooltips.bugaton.felldom_bottle.shifting1": "§7to increase their Nightmane Potency above Maximum.",
+
+  "tooltips.bugaton.modified_spyglass.shifting": "§7Hold in the Main Hand and put food in the offhand.",
+  "tooltips.bugaton.modified_spyglass.shifting1": "§7Use to check the Food for any Felldom Contamination.",
+
+  "tooltips.bugaton.nightmane.shifting": "§7Useful, yet highly addictive combat drug.",
+  "tooltips.bugaton.nightmane.shifting1": "§7Healed health depends on Purity. [DEFAULT 2]",
+
+  "tooltips.bugaton.not_shifting": "§7[SHIFT KEY] for more information.",
+
   "effect.bugaton.phantom_fever": "Phantom Fever",
   "effect.bugaton.felldom": "Felldom",
   "effect.bugaton.phantasmic_lure": "Phantasmic Lure",

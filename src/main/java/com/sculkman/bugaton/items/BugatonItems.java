@@ -21,6 +21,7 @@ public class BugatonItems {
     public static final Item PHANTASM = registerItem("phantasm", new PhantasmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
     public static final Item ABHORRENT_DELIGHT = registerItem("abhorrent_delight", new Item(new FabricItemSettings().maxCount(8).rarity(Rarity.RARE).food(BugatonFoodComponents.ABHORRENT_DELIGHT)));
     public static final Item UNKNOWABLE_EMBRYO = registerItem("unknowable_embryo", new Item(new FabricItemSettings().maxCount(16).rarity(Rarity.COMMON)));
+    public static final Item FELLDOM_BOTTLE = registerItem("felldom_bottle", new FelldomBottle(new FabricItemSettings().rarity(Rarity.UNCOMMON).maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Bugaton.MOD_ID, name), item);

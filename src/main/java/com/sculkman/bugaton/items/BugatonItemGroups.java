@@ -15,7 +15,10 @@ public class BugatonItemGroups {
             new Identifier(Bugaton.MOD_ID, "bugaton"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.bugaton"))
                     .icon(() -> new ItemStack(BugatonItems.NIGHTMARE_SPAWN_EGG)).entries((displayContext, entries) -> {
-                        //Items
+                        //General
+                        entries.add(BugatonItems.FELLDOM_BOTTLE);
+
+                        //Nightmane Related Items
                         entries.add(BugatonItems.NIGHTMARE_SPAWN_EGG);
                         entries.add(BugatonItems.NIGHTMANE);
                         entries.add(BugatonItems.MODIFIED_SPYGLASS);
