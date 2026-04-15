@@ -15,8 +15,13 @@ public class BugatonEntities {
             new Identifier(Bugaton.MOD_ID, "nightmare"),
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, NightmareEntity::new).dimensions(EntityDimensions.fixed(0.8f, 0.8f))
                     .build());
+    public static final EntityType<DisturbedEntity> DISTURBED = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(Bugaton.MOD_ID, "disturbed"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, DisturbedEntity::new).dimensions(EntityDimensions.fixed(0.8f, 3.4f))
+                    .build());
 
     public static void registerModEntites() {
         FabricDefaultAttributeRegistry.register(NIGHTMARE, NightmareEntity.createNightmareAttributes());
+        FabricDefaultAttributeRegistry.register(DISTURBED, DisturbedEntity.createDisturbedAttributes());
     }
 }

@@ -2,7 +2,9 @@ package com.sculkman.bugaton;
 
 import com.sculkman.bugaton.entity.BugatonEntities;
 import com.sculkman.bugaton.entity.BugatonModelLayers;
+import com.sculkman.bugaton.entity.models.DisturbedModel;
 import com.sculkman.bugaton.entity.models.NightmareModel;
+import com.sculkman.bugaton.entity.renderers.DisturbedRenderer;
 import com.sculkman.bugaton.entity.renderers.NightmareRenderer;
 import com.sculkman.bugaton.particle.BugatonParticles;
 import com.sculkman.bugaton.particle.LocustParticle;
@@ -19,5 +21,7 @@ public class BugatonClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(BugatonParticles.PHANTOMLING, PhantomlingParticle.Factory::new);
         EntityModelLayerRegistry.registerModelLayer(BugatonModelLayers.NIGHTMARE, NightmareModel::getTexturedModelData);
         EntityRendererRegistry.register(BugatonEntities.NIGHTMARE, NightmareRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(BugatonModelLayers.DISTURBED, DisturbedModel::getTexturedModelData);
+        EntityRendererRegistry.register(BugatonEntities.DISTURBED, DisturbedRenderer::new);
     }
 }

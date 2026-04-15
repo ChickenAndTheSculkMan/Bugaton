@@ -1,5 +1,6 @@
 package com.sculkman.bugaton.items;
 
+import com.sculkman.bugaton.effect.BugatonEffect;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.gui.screen.option.KeybindsScreen;
@@ -40,7 +41,7 @@ public class FelldomBottle extends Item {
         }
 
         if (!world.isClient) {
-            user.removeStatusEffect(StatusEffects.POISON);
+            user.removeStatusEffect(BugatonEffect.PHANTOM_FEVER);
         }
 
         if (stack.isEmpty()) {

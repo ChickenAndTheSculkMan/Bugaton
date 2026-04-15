@@ -7,4 +7,6 @@ import net.minecraft.util.Identifier;
 public class BugatonModelLayers {
     public static final EntityModelLayer NIGHTMARE =
             new EntityModelLayer(new Identifier(Bugaton.MOD_ID, "nightmare"), "main");
+    public static final EntityModelLayer DISTURBED =
+            new EntityModelLayer(new Identifier(Bugaton.MOD_ID, "disturbed"), "main");
 }
